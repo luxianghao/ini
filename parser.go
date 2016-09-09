@@ -119,7 +119,11 @@ func readKeyName(in []byte) (string, int, error) {
 
 	endIdx = strings.IndexAny(line, "=:")
 	if endIdx < 0 {
-		return "", -1, ErrDelimiterNotFound{line}
+		if strings.Contains(line, "]]"){
+			endIdx = len(line) - 1
+		}else {
+			return "", -1, ErrDelimiterNotFound{line}
+		}
 	}
 	return strings.TrimSpace(line[0:endIdx]), endIdx + 1, nil
 }
@@ -256,7 +260,7 @@ func (f *File) parse(reader io.Reader) (err error) {
 		}
 
 		// Section
-		if line[0] == '[' {
+		if line[0] == '[' && line[1] != '['{
 			// Read to the next ']' (TODO: support quoted strings)
 			// TODO(unknwon): use LastIndexByte when stop supporting Go1.4
 			closeIdx := bytes.LastIndex(line, []byte("]"))
