@@ -4,10 +4,19 @@ INI [![Build Status](https://travis-ci.org/go-ini/ini.svg?branch=master)](https:
 ![](https://avatars0.githubusercontent.com/u/10216035?v=3&s=200)
 
 Package ini provides INI file read and write functionality in Go.
+ddddd
+dd
 
 [简体中文](README_ZH.md)
+testt
 
+
+tresttest
 ## Feature
+
+
+
+tete
 
 - Load multiple data sources(`[]byte` or file) with overwrites.
 - Read with recursion values.
